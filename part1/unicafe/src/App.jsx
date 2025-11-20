@@ -8,6 +8,24 @@ import { useState } from 'react'
 //   </div>
 // }
 
+const Feedback = ({ handleGood, handleNeutral, handleBad }) => {
+  return <div>
+    <h1>give feedback</h1>
+    <Button onClick={handleGood} text='good' />
+    <Button onClick={handleNeutral} text='neutral' />
+    <Button onClick={handleBad} text='bad' />
+  </div>
+}
+
+const Statistics = ({good, neutral, bad}) => {
+  return <div>
+    <h2>statistics</h2>
+    <p>good {good}</p>
+    <p>neutral {neutral}</p>
+    <p>bad {bad}</p>
+  </div>
+}
+
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
 
 const App = () => {
@@ -29,15 +47,10 @@ const App = () => {
 
   return (
     <div>
-      <h1>give feedback</h1>
+
       {/* <Buttons handleGood={handleGood} handleNeutral={handleNeutral} handleBad={handleBad} /> */}
-      <Button onClick={handleGood} text='good' />
-      <Button onClick={handleNeutral} text='neutral' />
-      <Button onClick={handleBad} text='bad' />
-      <h2>statistics</h2>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
+      <Feedback handleGood={handleGood} handleNeutral={handleNeutral} handleBad={handleBad} />
+      <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
   )
 }
