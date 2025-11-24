@@ -15,24 +15,25 @@ const Statistics = ({ good, neutral, bad, total }) => {
   const positive = all > 0 ? ((good / all) * 100).toFixed(1) : 0
   return <div>
     <h2>statistics</h2>
-    {total > 0 ? <div>
-      <StatisticLine text='good' value={good} />
-      <StatisticLine text='neutral' value={neutral} />
-      <StatisticLine text='bad' value={bad} />
-      <StatisticLine text='all' value={all > 0 ? all : 0} />
-      <StatisticLine text='average' value={average > 0 ? average : 0} />
-      <StatisticLine text='positive' value={positive > 0 ? positive : 0} />
-    </div> : 'No feedback given'}
+    {total > 0 ? <table>
+      <tbody>
+        <StatisticLine text='good' value={good} />
+        <StatisticLine text='neutral' value={neutral} />
+        <StatisticLine text='bad' value={bad} />
+        <StatisticLine text='all' value={all > 0 ? all : 0} />
+        <StatisticLine text='average' value={average > 0 ? average : 0} />
+        <StatisticLine text='positive' value={positive > 0 ? positive : 0} />
+      </tbody>
+    </table> : 'No feedback given'}
   </div>
 }
 
 const StatisticLine = ({ value, text }) => {
-return (
-  <tr>
-  <td>{text} {value} {text === 'positive' ? " %" : ""}</td>
-  </tr>
-
-)
+  return (
+    <tr>
+      <td>{text} {value} {text === 'positive' ? " %" : ""}</td>
+    </tr>
+  )
 }
 
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
