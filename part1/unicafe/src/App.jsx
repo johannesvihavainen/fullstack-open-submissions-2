@@ -1,13 +1,5 @@
 import { useState } from 'react'
 
-// const Buttons = (props) => {
-//   return <div className='buttons'>
-//     <button onClick={props.handleGood}>good</button>
-//     <button onClick={props.handleNeutral}>neutral</button>
-//     <button onClick={props.handleBad}>bad</button>
-//   </div>
-// }
-
 const Feedback = ({ handleGood, handleNeutral, handleBad }) => {
   return <div>
     <h1>give feedback</h1>
