@@ -20,7 +20,7 @@ const Feedback = ({ handleGood, handleNeutral, handleBad }) => {
 const Statistics = ({ good, neutral, bad, total }) => {
   const all = good + neutral + bad
   const average = all > 0 ? (good - bad) / all : 0
-  const positive = all > 0 ? (good / all) * 100 : 0
+  const positive = all > 0 ? ((good / all) * 100).toFixed(1) : 0
   return <div>
     <h2>statistics</h2>
     {total > 0 ? <div>
@@ -36,7 +36,10 @@ const Statistics = ({ good, neutral, bad, total }) => {
 
 const StatisticLine = ({ value, text }) => {
 return (
-  <p>{text}: {value} {text === 'positive' ? " %" : ""}</p>
+  <tr>
+  <td>{text} {value} {text === 'positive' ? " %" : ""}</td>
+  </tr>
+
 )
 }
 
