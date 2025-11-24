@@ -35,14 +35,9 @@ const Statistics = ({ good, neutral, bad, total }) => {
 }
 
 const StatisticLine = ({ value, text }) => {
-  if (text === 'good' || text === 'neutral' || text === 'bad' || text === 'all' || text === 'average') {
-    return <div>
-      <p>{text}: {value}</p>
-    </div>
-  }
-  else if (text === 'positive') {
-    return <div><p>{text}: {value} % </p></div>
-  }
+return (
+  <p>{text}: {value} {text === 'positive' ? " %" : ""}</p>
+)
 }
 
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
