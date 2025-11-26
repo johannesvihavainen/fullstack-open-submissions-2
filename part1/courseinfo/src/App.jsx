@@ -1,7 +1,11 @@
+const Title = () => {
+  return <h1>Web development curriculum</h1>
+}
+
 const Header = (props) => {
   return (
     <div>
-      <h1>{props.courses}</h1>
+      <h2>{props.courses}</h2>
     </div>
   )
 }
@@ -27,6 +31,7 @@ const Content = (props) => {
 const Course = ({ courses }) => {
   return (
     <div>
+      <Title />
       <Header courses={courses[0].name} />
       <Content parts={courses[0].parts} />
       <Total parts={courses[0].parts} />
