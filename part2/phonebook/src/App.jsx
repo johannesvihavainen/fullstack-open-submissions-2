@@ -37,9 +37,9 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-      <div className="persons-container">
-        {persons.map(person => <p>{person.name}</p>)}
-      </div>
+      <ul className="persons-container">
+        {persons.map(person => <li key={person.name}>{person.name}</li>)}
+      </ul>
     </div>
   )
 }
