@@ -1,9 +1,10 @@
 import { useState } from 'react'
+import './App.css'
 
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas' }
-  ]) 
+  ])
   const [newName, setNewName] = useState('')
 
   const handleNameChange = (event) => {
@@ -23,7 +24,7 @@ const App = () => {
     setNewName('')
     console.log(persons)
   }
-  
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -36,7 +37,9 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-      ...
+      <div className="persons-container">
+        {persons.map(person => <p>{person.name}</p>)}
+      </div>
     </div>
   )
 }
