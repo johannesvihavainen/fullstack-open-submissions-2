@@ -3,7 +3,10 @@ import './App.css'
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-1234567' }
+    { name: 'Arto Hellas', number: '040-123456', id: 1 },
+    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
+    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
+    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
   ])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
@@ -27,7 +30,8 @@ const App = () => {
     event.preventDefault()
     const personObject = {
       name: newName,
-      number: newNumber
+      number: newNumber,
+      id: persons.length + 1
     }
 
     if (persons.some(person => person.name === personObject.name)) {
@@ -36,7 +40,6 @@ const App = () => {
       setPersons(persons.concat(personObject))
       setNewName('')
     }
-    console.log(persons)
   }
 
   return (
@@ -59,7 +62,7 @@ const App = () => {
       </form>
       <h2>Numbers</h2>
       <ul className="persons-container">
-        {filteredPersons ? filteredPersons.map(person => <li>{person.name} {person.number}</li>) : persons.map(person => <li key={person.name}>{person.name} {person.number}</li>)}
+        {filteredPersons ? filteredPersons.map(person => <li key={person.id}>{person.name} {person.number}</li>) : persons.map(person => <li key={person.id}>{person.name} {person.number}</li>)}
 
       </ul>
     </div>
