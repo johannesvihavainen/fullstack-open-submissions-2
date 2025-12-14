@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 const App = () => {
@@ -7,6 +7,14 @@ const App = () => {
   ])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
+  const [searchValue, setSearchValue] = useState('')
+
+  const getFilteredPersons = () => {
+    if (!searchValue) return persons
+    return persons.filter(person => person.name.toLowerCase().includes(searchValue.toLowerCase()))
+  }
+
+  const filteredPersons = getFilteredPersons()
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
@@ -34,6 +42,10 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <div>
+        filter show with: <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+      </div>
+      <h2>add a new</h2>
       <form onSubmit={handleSubmit}>
         <div>
           name: <input value={newName} onChange={handleNameChange} />
@@ -47,7 +59,8 @@ const App = () => {
       </form>
       <h2>Numbers</h2>
       <ul className="persons-container">
-        {persons.map(person => <li key={person.name}>{person.name} {person.number}</li>)}
+        {filteredPersons ? filteredPersons.map(person => <li>{person.name} {person.number}</li>) : persons.map(person => <li key={person.name}>{person.name} {person.number}</li>)}
+
       </ul>
     </div>
   )
